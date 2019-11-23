@@ -1,7 +1,6 @@
 # pages/views.py
 from django.views.generic import TemplateView, DetailView, ListView # new
 from django.views.generic.edit import CreateView # new
-from .filters import FilterByKey
 
 from .models import Post
 
