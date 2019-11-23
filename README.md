@@ -1,2 +1,0 @@
-# newjs
-Created with CodeSandbox
