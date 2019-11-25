@@ -6,9 +6,14 @@ from django.shortcuts import render
 
 from .models import Post
 
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
-class SelectView(TemplateView):
-    template_name = 'select.html'
+def SelectView(request):
+    keyones = Post.objects.values_list('keyone',flat=True).distinct()
+    return render(request, 'select.html', {
+        'keyones': keyones
+    })
 
 class PostView(CreateView): # new
     model = Post
@@ -20,8 +25,8 @@ class PostDetailView(DetailView): # new
     template_name = 'post_detail.html'
 
 
-def HomePageView(request):
-    key2select = Post.objects.filter(keyone=2)
+def HomePageView(request, key):
+    key2select = Post.objects.filter(keyone=key)
     return render(request, 'home.html', {
         'key2select': key2select,
     })
